@@ -1,0 +1,27 @@
+[phi] max phi = 1.000000000000 (Lemma 2.1: <= 1); min of phi - max(r^(n1-1), 2/(n1+1)) = 0.000e+00 (>= 0)
+[mean] n 10 n1 3 g 0.07: stationary mean, DP 3.415408422484e-02, (g s/2) phi(r) 3.415408422484e-02
+[mean] n 40 n1 1 g 0.01: stationary mean, DP 5.000000000000e-03, (g s/2) phi(r) 5.000000000000e-03
+[mean] n 100 n1 10 g 0.002: stationary mean, DP 9.969970162544e-04, (g s/2) phi(r) 9.969970162545e-04
+[var] n 40 n1 1 g 1e-05: Var B 8.7608e-22, first order 8.7607e-22 (ratio 1.0000), Lemma 2.2 bound 8.7613e-22, holds True
+[var] n 40 n1 1 g 1e-04: Var B 8.7607e-18, first order 8.7607e-18 (ratio 1.0000), Lemma 2.2 bound 8.7666e-18, holds True
+[var] n 40 n1 1 g 1e-03: Var B 8.7607e-14, first order 8.7607e-14 (ratio 1.0000), Lemma 2.2 bound 8.8200e-14, holds True
+[var] n 40 n1 3 g 1e-05: Var B 2.4932e-20, first order 2.4932e-20 (ratio 1.0000), Lemma 2.2 bound 2.4941e-20, holds True
+[var] n 40 n1 3 g 1e-04: Var B 2.4927e-16, first order 2.4932e-16 (ratio 0.9998), Lemma 2.2 bound 2.5018e-16, holds True
+[var] n 40 n1 3 g 1e-03: Var B 2.4883e-12, first order 2.4932e-12 (ratio 0.9980), Lemma 2.2 bound 2.5792e-12, holds True
+[var] n 100 n1 10 g 1e-05: Var B 9.3510e-19, first order 9.3519e-19 (ratio 0.9999), Lemma 2.2 bound 9.3712e-19, holds True
+[var] n 100 n1 10 g 1e-04: Var B 9.3434e-15, first order 9.3519e-15 (ratio 0.9991), Lemma 2.2 bound 9.5463e-15, holds True
+[var] n 100 n1 10 g 1e-03: Var B 9.2681e-11, first order 9.3519e-11 (ratio 0.9910), Lemma 2.2 bound 1.1386e-10, holds True
+[var] n 100 n1 50 g 1e-05: Var B 2.1031e-16, first order 2.1042e-16 (ratio 0.9995), Lemma 2.2 bound 2.1406e-16, holds True
+[var] n 100 n1 50 g 1e-04: Var B 2.0939e-12, first order 2.1042e-12 (ratio 0.9951), Lemma 2.2 bound 2.4824e-12, holds True
+[var] n 100 n1 50 g 1e-03: Var B 2.0038e-08, first order 2.1042e-08 (ratio 0.9523), Lemma 2.2 bound 7.2931e-08, holds True
+[var] n 1000 n1 100 g 1e-05: Var B 9.2593e-16, first order 9.2685e-16 (ratio 0.9990), Lemma 2.2 bound 9.8874e-16, holds True
+[var] n 1000 n1 100 g 1e-04: Var B 9.1773e-12, first order 9.2685e-12 (ratio 0.9902), Lemma 2.2 bound 1.6357e-11, holds True
+[var] n 1000 n1 100 g 1e-03: Var B 8.4002e-08, first order 9.2685e-08 (ratio 0.9063), Lemma 2.2 bound 1.7016e-06, holds True
+[mc] n 10 n1 3 K 5 g 0.05 X0 1.0: exact 3.406381e-02, simulated 3.406534e-02 +- 1.7e-06
+[mc] n 12 n1 1 K 8 g 0.2 X0 -0.5: exact 1.774291e-05, simulated 1.776844e-05 +- 3.7e-08
+[rate] n 40 n1 1 K 1000: X0=+D min 2.2966e-07 = 1.540 x unit = 190 x lower bound; argmin g mu T/Lam 1.096; at g = Lam/(mu T): 2.4514e-07 <= upper 2.4902e-07 True; X0=-D min 0.0007 x unit
+[rate] n 40 n1 1 K 10000: X0=+D min 3.7120e-09 = 1.400 x unit = 156 x lower bound; argmin g mu T/Lam 1.074; at g = Lam/(mu T): 3.9211e-09 <= upper 3.9297e-09 True; X0=-D min 0.0002 x unit
+[rate] n 100 n1 10 K 1000: X0=+D min 1.5033e-08 = 1.418 x unit = 158 x lower bound; argmin g mu T/Lam 1.074; at g = Lam/(mu T): 1.5830e-08 <= upper 1.6803e-08 True; X0=-D min 0.0107 x unit
+[rate] n 100 n1 10 K 10000: X0=+D min 2.1835e-10 = 1.318 x unit = 136 x lower bound; argmin g mu T/Lam 1.063; at g = Lam/(mu T): 2.2849e-10 <= upper 2.3018e-10 True; X0=-D min 0.0014 x unit
+[rate] n 100 n1 50 K 10000: X0=+D min 5.5956e-11 = 1.300 x unit = 129 x lower bound; argmin g mu T/Lam 1.051; at g = Lam/(mu T): 5.8098e-11 <= upper 6.0102e-11 True; X0=-D min 0.0155 x unit
+[rate] n 1000 n1 100 K 10000: X0=+D min 3.0758e-12 = 1.289 x unit = 126 x lower bound; argmin g mu T/Lam 1.045; at g = Lam/(mu T): 3.1864e-12 <= upper 3.4747e-12 True; X0=-D min 0.0178 x unit
