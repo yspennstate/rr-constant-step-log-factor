@@ -1,0 +1,316 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\title[The logarithmic factor in constant-step random reshuffling]{The logarithmic factor in the tuned constant-step rate of random reshuffling}
+\author{Yitzchak Shmalo}
+\begin{document}
+\begin{abstract}
+For strongly convex finite sums, the known last-iterate upper bounds for random reshuffling with a constant step size
+chosen from the number of epochs carry a logarithmic factor, while the known lower bounds carry none. We show that for
+constant steps the factor cannot be removed. On a one-dimensional sum of $n_1$ quadratic and $n-n_1$ linear components,
+with average curvature $\mu$, gradient bound $G$ at the minimiser and initial distance $D$, every constant step
+$\gamma\le 1/L$ leaves $\E F(x_K)-F^*\ge G^2(\Lambda-\ln\Lambda)^2/(512\,\mu T^2)$ after $K$ epochs, where $T=nK$ and
+$\Lambda=\ln(\mu TD/G)$, while the step $\gamma=\Lambda/(\mu T)$ gives at most $G^2\Lambda^2(1+o(1))/(8\mu T^2)$ once $K$ is large compared with $n_1\Lambda$. The proof
+computes one epoch exactly: the stationary mean of the epoch-end iterate is $\gamma G\varphi/2$, where $\varphi$ is a
+weighted mean lying between $(1-\gamma L)^{n_1-1}$ and $1$, and the epoch variance reduces to the variance of a
+Mann--Whitney statistic. The bound concerns the worst starting point: from the other side of the minimiser a tuned step
+can cancel the transient against the bias, while a start of random sign keeps the bound for every step.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+Let $F=\frac1n\sum_{i=1}^n f_i$ be a finite sum with $L$-smooth components and a $\mu$-strongly convex average, with
+minimiser $x^*$. Random reshuffling (RR) runs $K$ epochs; each epoch draws a fresh uniform permutation $\pi$ of
+$\{1,\dots,n\}$ and makes the $n$ steps $x\leftarrow x-\gamma\nabla f_{\pi(t)}(x)$, $t=1,\dots,n$. We write $T=nK$ for
+the total number of steps and $x_K$ for the iterate at the end of epoch $K$.
+
+Upper bounds for the last iterate, or for function values along the last epoch, with a constant step chosen from $K$,
+are given by Mishchenko, Khaled and Richt\'arik \cite{mkr}, Ahn, Yun and Sra \cite{ays} and Liu and Zhou \cite{lz},
+among others; each carries a logarithmic factor in $K$ or $T$, coming from the step size. Lower bounds for constant
+steps are due to Safran and Shamir \cite{ss,ss21}, Rajput, Gupta and Papailiopoulos \cite{rgp} and Cha, Lee and Yun
+\cite{cly}; they carry no logarithm. Liu and Zhou write that the extra factor
+$1+\log K$ in their step sizes ``seems necessary in our analysis'' and ask whether it can be removed \cite[Section~6]{lz}.
+
+The result below answers this for constant steps on a simple instance. The mechanism is the competition between the
+transient and the bias. After $K$ epochs the mean iterate is $A^K x_0+(1-A^K)m$, where $A\approx e^{-\gamma\mu n}$ is the
+epoch contraction and $m$ is a stationary bias proportional to $\gamma$. Forgetting the start requires
+$\gamma\mu T\gtrsim\ln(\mu TD/G)$, and then the bias is of order $G\ln(\mu TD/G)/(\mu T)$. What has to be proved is
+that the bias has a definite sign and size for every step $\gamma\le 1/L$, uniformly in $n$, and that the fluctuations
+of the epoch do not change the order of the error at the tuned step. Both follow from an exact computation of one epoch.
+
+\subsection*{The instance}
+Fix $n\ge2$, $1\le n_1\le n/2$, $n_2=n-n_1$ and $L,s>0$. Let
+\[
+f_i(x)=\frac L2x^2-sx\quad(1\le i\le n_1),\qquad f_i(x)=s\,\frac{n_1}{n_2}\,x\quad(n_1<i\le n).
+\]
+The linear parts cancel in the average, so $F(x)=\frac{\mu}{2}x^2$ with $\mu=Ln_1/n$, $x^*=0$ and $F^*=0$. Every
+component is convex and $L$-smooth. At the minimiser the gradients are $-s$ and $sn_1/n_2$, so
+$G:=\max_i|f_i'(x^*)|=s$ and $\sigma_*^2:=\frac1n\sum_i f_i'(x^*)^2=s^2n_1/n_2$. The condition number is $\kappa=L/\mu=n/n_1$.
+We call the first $n_1$ components stiff and the others flat. For $x_0=D>0$ put
+\[
+\Lambda=\ln\frac{\mu TD}{G}.
+\]
+
+\begin{theorem}\label{thm:main}
+Let $K\ge2$ and $\Lambda\ge3$.
+\begin{enumerate}
+\item[(a)] If $K\ge n_1(\Lambda-\ln\Lambda)/2$, then every constant step $0<\gamma\le1/L$ gives
+\[
+\E F(x_K)-F^*\ \ge\ \frac{G^2(\Lambda-\ln\Lambda)^2}{512\,\mu T^2}.
+\]
+\item[(b)] If $K\ge2\Lambda$, the step $\gamma=\Lambda/(\mu T)$ gives
+\[
+\E F(x_K)-F^*\ \le\ \frac{G^2}{2\mu T^2}\Big[\Big(1+\frac{\Lambda}{2}\Big)^2
++\frac{\Lambda^3n_1}{K}\Big(\frac12+\frac{\Lambda\sqrt{n_1}}{K}\Big)^2\Big].
+\]
+\end{enumerate}
+In particular, if $K\ge\max(2\Lambda,n_1\Lambda)$, then
+$\min_{0<\gamma\le1/L}\E F(x_K)-F^*=\Theta\big(G^2\ln^2(\mu TD/G)/(\mu T^2)\big)$ with absolute constants.
+\end{theorem}
+
+The lower bound is in terms of $G$. With $n_1=1$ it reads in terms of $\sigma_*$: then $G^2=(n-1)\sigma_*^2$,
+$\mu=L/n$ and $\Lambda=\ln(LKD/G)$, so
+\[
+\min_{0<\gamma\le 1/L}\E F(x_K)-F^*\ \ge\ \frac{\sigma_*^2\,(\Lambda-\ln\Lambda)^2}{1024\,\mu nK^2},
+\]
+which has the dependence on $n$ and $K$ of the constant-step lower bound $L\sigma_*^2/(\mu^2nK^2)$ of \cite{ss21,cly},
+multiplied by $\ln^2K$; the factor $\kappa=L/\mu$ of that bound does not appear. The matching upper bound of Theorem~\ref{thm:main}(b) shows that on this family no power of
+$\kappa$ appears; whether the logarithm and a positive power of $\kappa$ can occur together in a lower bound for the
+tuned last iterate is not addressed here.
+
+Section~\ref{sec:epoch} computes one epoch, Section~\ref{sec:lower} proves part (a) together with a version for a start
+of random sign, Section~\ref{sec:upper} proves part (b), and Section~\ref{sec:numerics} reports exact computations of
+$\E F(x_K)-F^*$ that check the constants.
+
+\section{One epoch}\label{sec:epoch}
+
+Write $r=1-\gamma L$. A stiff step maps $x$ to $rx+\gamma s$ and a flat step maps $x$ to $x-\gamma sn_1/n_2$. In an epoch
+with permutation $\pi$, let $q_t$ be the number of stiff steps that come after step $t$, and let $c_t=\gamma s$ if step
+$t$ is stiff and $c_t=-\gamma sn_1/n_2$ if it is flat. Composing the $n$ maps gives
+\begin{equation}\label{eq:epoch}
+X_{k+1}=AX_k+B_k,\qquad A=r^{n_1},\qquad B_k=\sum_{t=1}^nc_tr^{q_t},
+\end{equation}
+where $X_k$ is the iterate at the end of epoch $k$. The coefficient $A$ is deterministic, and the $B_k$ are independent
+and identically distributed, each independent of $X_k$, because each epoch draws a fresh permutation. Hence
+\begin{equation}\label{eq:moments}
+\E X_K=A^KX_0+(1-A^K)\,m,\qquad m=\frac{\E B}{1-A},\qquad
+\Var X_K=\frac{1-A^{2K}}{1-A^2}\Var B
+\end{equation}
+for a deterministic $X_0$ and $0\le r<1$, and $\E F(x_K)-F^*=\frac\mu2\E X_K^2$.
+
+\begin{lemma}\label{lem:mean}
+For $0\le r<1$,
+\[
+m=\frac{\gamma s}{2}\,\varphi(r),\qquad \varphi(r)=\frac{2}{n_1+1}\cdot\frac{\sum_{k=0}^{n_1-1}(k+1)r^k}{\sum_{k=0}^{n_1-1}r^k},
+\]
+and
+\[
+\max\Big(r^{n_1-1},\frac{2}{n_1+1}\Big)\ \le\ \varphi(r)\ \le\ 1 .
+\]
+\end{lemma}
+
+\begin{proof}
+In a uniform permutation a stiff step has $q$ uniform on $\{0,\dots,n_1-1\}$, and a flat step, which falls into one of
+the $n_1+1$ gaps between stiff steps with equal probability, has $q$ uniform on $\{0,\dots,n_1\}$. With
+$S_j=\sum_{q=0}^{j-1}r^q$,
+\[
+\E B=\gamma s\,S_{n_1}-\gamma s\,\frac{n_1}{n_1+1}\,S_{n_1+1}=\frac{\gamma s}{n_1+1}\sum_{q=0}^{n_1-1}\big(r^q-r^{n_1}\big).
+\]
+Since $r^q-r^{n_1}=(1-r)\sum_{p=0}^{n_1-q-1}r^{q+p}$ and the number of pairs $(q,p)$ with $q+p=k\le n_1-1$ is $k+1$,
+\[
+\sum_{q=0}^{n_1-1}(r^q-r^{n_1})=(1-r)\sum_{k=0}^{n_1-1}(k+1)r^k,
+\]
+while $1-A=1-r^{n_1}=(1-r)\sum_{k=0}^{n_1-1}r^k$. Dividing gives the formula for $m$.
+
+The quantity $\varphi(r)$ is the mean of the increasing sequence $a_k=2(k+1)/(n_1+1)$, $k=0,\dots,n_1-1$, under the
+non-increasing weights $r^k$. By Chebyshev's sum inequality it is at most the unweighted mean of the $a_k$, which is
+$1$. It is at least the smallest $a_k$, which is $2/(n_1+1)$. Finally
+$\sum_k(k+1)r^k\ge r^{n_1-1}n_1(n_1+1)/2$ and $\sum_kr^k\le n_1$ give $\varphi(r)\ge r^{n_1-1}$.
+\end{proof}
+
+At $r=1$ the formula gives $\varphi=1$, so $m\to\gamma s/2$ as $\gamma\to0$; the bias is positive, and it is never
+larger than this limit.
+
+\begin{lemma}\label{lem:var}
+If $0\le\gamma L\le1$, then
+\[
+\Var B\ \le\ \gamma^4L^2s^2\Big[\Big(\frac{n_1^3(n+1)}{12\,n_2}\Big)^{1/2}+\gamma Ln_1^3\Big]^2 .
+\]
+\end{lemma}
+
+\begin{proof}
+Since $\sum_tc_t=n_1\gamma s-n_2\gamma sn_1/n_2=0$, we may write $B=\sum_tc_t(r^{q_t}-1)$. For $x=\gamma L\in[0,1]$ and
+an integer $q\ge0$, Bernoulli's inequality and $e^{-y}\le1-y+y^2/2$ ($y\ge0$) give
+\[
+0\ \le\ e_q:=r^q-1+q\gamma L\ \le\ e^{-q\gamma L}-1+q\gamma L\ \le\ \tfrac12(q\gamma L)^2\ \le\ \tfrac12(n_1\gamma L)^2 .
+\]
+Hence $B=E_1+E_2$ with $E_1=-\gamma L\sum_tc_tq_t$ and $E_2=\sum_tc_te_{q_t}$, and
+$|E_2|\le\frac12(n_1\gamma L)^2\sum_t|c_t|=\gamma^3sL^2n_1^3$, because $\sum_t|c_t|=2\gamma sn_1$.
+
+In $E_1$ the stiff steps take the values $q=0,1,\dots,n_1-1$ once each, so their part is the constant
+$\gamma s\,n_1(n_1-1)/2$. For the flat steps, $\sum_{t\text{ flat}}q_t=U$ is the number of pairs (flat step, stiff
+step) in which the stiff step comes later. This is the Mann--Whitney statistic of two samples of sizes $n_2$ and $n_1$
+under a uniform random order \cite{mw}, whose variance is $n_1n_2(n+1)/12$. Therefore
+\[
+\Var E_1=\gamma^2L^2\Big(\frac{\gamma sn_1}{n_2}\Big)^2\frac{n_1n_2(n+1)}{12}=\gamma^4L^2s^2\,\frac{n_1^3(n+1)}{12\,n_2},
+\]
+and the claim follows from $\Var(E_1+E_2)^{1/2}\le\Var(E_1)^{1/2}+\sup|E_2|$.
+\end{proof}
+
+The first-order term is sharp: the exact epoch variance, computed in Section~\ref{sec:numerics}, is $0.91$ to $1.00$
+times $\gamma^4L^2s^2n_1^3(n+1)/(12n_2)$ for $\gamma Ln_1\le0.1$.
+
+\section{The lower bound}\label{sec:lower}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}(a)]
+Since $\E X_K^2\ge(\E X_K)^2$, it suffices to bound $\E X_K$ from below. For $0<\gamma\le1/L$ we have $A\in[0,1)$ and,
+by Lemma~\ref{lem:mean}, $m>0$; with $X_0=D>0$ both terms of $\E X_K=A^KD+(1-A^K)m$ are nonnegative, so $\E X_K$ is at
+least each of them. Put $u=\gamma\mu T=\gamma Ln_1K$. We show $\E X_K\ge G(\Lambda-\ln\Lambda)/(16\mu T)$, which gives
+the claim, since $\frac\mu2\big(G(\Lambda-\ln\Lambda)/(16\mu T)\big)^2=G^2(\Lambda-\ln\Lambda)^2/(512\mu T^2)$.
+
+\emph{Steps with $\gamma Ln_1\le1/2$.} Then $\gamma L\le1/2$, and $\ln(1-x)\ge-2x$ on $[0,1/2]$ gives
+$A^K=(1-\gamma L)^{n_1K}\ge e^{-2u}$. Also $\varphi(r)\ge r^{n_1-1}\ge1-(n_1-1)\gamma L\ge1/2$, so $m\ge\gamma s/4$.
+If $u\le(\Lambda-\ln\Lambda)/2$, then
+\[
+\E X_K\ \ge\ De^{-2u}\ \ge\ De^{-\Lambda+\ln\Lambda}=\frac{G\Lambda}{\mu T}.
+\]
+If $u>(\Lambda-\ln\Lambda)/2$, then $u>\ln2$, because $\Lambda-\ln\Lambda\ge3-\ln3>2\ln2$; hence
+$A^K\le e^{-\gamma Ln_1K}=e^{-u}<1/2$ and
+\[
+\E X_K\ \ge\ \tfrac12\,m\ \ge\ \frac{\gamma s}{8}=\frac{uG}{8\mu T}\ >\ \frac{G(\Lambda-\ln\Lambda)}{16\,\mu T}.
+\]
+
+\emph{Steps with $\gamma Ln_1>1/2$.} Then $A^K\le e^{-\gamma Ln_1K}\le e^{-K/2}<1/2$ because $K\ge2$, and
+$\varphi\ge2/(n_1+1)$ gives $m\ge\gamma s/(n_1+1)$. Hence
+\[
+\E X_K\ \ge\ \frac{\gamma s}{2(n_1+1)}\ >\ \frac{s}{4Ln_1(n_1+1)}\ \ge\ \frac{G}{8Ln_1^2}=\frac{G}{8\mu nn_1}.
+\]
+Since $T=nK$, this is at least $G(\Lambda-\ln\Lambda)/(16\mu T)$ exactly when $K\ge n_1(\Lambda-\ln\Lambda)/2$.
+\end{proof}
+
+The start $x_0=D$ lies on the side of the minimiser towards which the bias points, so the transient and the bias add.
+From $x_0=-D$ they have opposite signs and a step can make $\E X_K$ vanish; the error is then carried by the
+variance alone, and the best step does much better (Section~\ref{sec:numerics}). The bound is therefore a statement
+about the worst start. It does not depend on choosing the start after the step, as the following version shows.
+
+\begin{proposition}\label{prop:random}
+Let $x_0=\pm D$ with probability $1/2$ each, independent of the permutations, and let $K$ and $\Lambda$ be as in
+Theorem~\ref{thm:main}(a). Then every constant step $0<\gamma\le1/L$ gives
+$\E F(x_K)-F^*\ge G^2(\Lambda-\ln\Lambda)^2/(512\,\mu T^2)$.
+\end{proposition}
+
+\begin{proof}
+By \eqref{eq:epoch}, $X_K=A^KX_0+Z$ with $Z=\sum_{k<K}A^{K-1-k}B_k$ independent of $X_0$ and $\E Z=(1-A^K)m$. Since
+$\E X_0=0$,
+\[
+\E X_K^2=A^{2K}D^2+\E Z^2\ \ge\ \max\big((A^KD)^2,\ ((1-A^K)m)^2\big).
+\]
+The proof of Theorem~\ref{thm:main}(a) bounded $\E X_K$ below by one of $A^KD$ and $(1-A^K)m$ in each case, so the same
+lower bound holds for $\E X_K^2$.
+\end{proof}
+
+\section{The upper bound}\label{sec:upper}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}(b)]
+Take $\gamma=\Lambda/(\mu T)$, so $\gamma Ln_1=\Lambda/K\le1/2$ and $0<r<1$. By \eqref{eq:moments}, Lemma~\ref{lem:mean}
+and $A^K\le e^{-\gamma Ln_1K}=e^{-\Lambda}=G/(\mu TD)$,
+\[
+0\ \le\ \E X_K\ \le\ A^KD+m\ \le\ \frac{G}{\mu T}+\frac{\gamma s}{2}=\frac{G}{\mu T}\Big(1+\frac\Lambda2\Big).
+\]
+For the variance, $1-A^2\ge1-e^{-2\gamma Ln_1}\ge\gamma Ln_1$ because $1-e^{-y}\ge y/2$ on $[0,1]$. Since
+$n_2\ge n/2$ and $n\ge2$, we have $(n+1)/n_2\le3$, so the first term in the bracket of Lemma~\ref{lem:var} is at most
+$n_1^{3/2}/2$, and the second is $\gamma Ln_1^3=n_1^{3/2}\cdot\Lambda\sqrt{n_1}/K$. Hence
+\[
+\Var X_K\ \le\ \frac{\Var B}{1-A^2}\ \le\ \gamma^3Ls^2n_1^2\Big(\frac12+\frac{\Lambda\sqrt{n_1}}{K}\Big)^2
+=\frac{s^2\Lambda^3nn_1}{\mu^2T^3}\Big(\frac12+\frac{\Lambda\sqrt{n_1}}{K}\Big)^2,
+\]
+using $Ln_1^2=\mu nn_1$. Adding $\frac\mu2(\E X_K)^2$ and $\frac\mu2\Var X_K$ and using $n/T=1/K$ gives the bound.
+\end{proof}
+
+\begin{proof}[Proof of the last statement of Theorem~\ref{thm:main}]
+If $K\ge\max(2\Lambda,n_1\Lambda)$, both parts apply, since $n_1(\Lambda-\ln\Lambda)/2\le n_1\Lambda$. In part (b),
+$\Lambda\sqrt{n_1}/K\le1/\sqrt{n_1}\le1$ and $\Lambda^3n_1/K\le\Lambda^2$, so the bracket is at most
+$(1+\Lambda/2)^2+\frac94\Lambda^2\le4\Lambda^2$ for $\Lambda\ge3$. In part (a), $\Lambda-\ln\Lambda\ge\Lambda/2$ for
+$\Lambda\ge3$. Hence the minimum lies between $G^2\Lambda^2/(2048\mu T^2)$ and $2G^2\Lambda^2/(\mu T^2)$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:main} covers steps $0<\gamma\le1/L$. For $1/L<\gamma<2/L$ the factor $r$ is negative, the weights in
+$\varphi$ alternate in sign, and Lemma~\ref{lem:mean} does not apply; these steps are not treated here. The analyses
+cited above work with $\gamma\le1/L$ or smaller.
+\end{remark}
+
+\begin{remark}
+The theorem concerns constant steps. A step schedule decreasing within the run is not covered, and the logarithm in
+Theorem~\ref{thm:main} is a property of the best constant step, not of random reshuffling as such.
+\end{remark}
+
+\section{Numerical checks}\label{sec:numerics}
+
+All quantities below are exact up to rounding. For each step $\gamma$ the moments $\E B$ and $\E B^2$ of one epoch are
+computed by a dynamic programme over the position in the epoch and the number of stiff steps already taken, and
+$\E X_K$, $\E X_K^2$ follow from \eqref{eq:epoch} by recursion over the $K$ independent epochs. The programme agrees
+with direct simulation of random reshuffling with $4\cdot10^5$ runs to within the sampling error. We use $L=s=D=1$.
+
+\emph{The epoch.} Over $n_1\le200$ and a grid of $r\in[0,1]$, $\varphi(r)\le1$ and
+$\varphi(r)\ge\max(r^{n_1-1},2/(n_1+1))$; for $n_1=1$ both bounds are equalities. The stationary mean of the
+programme equals $(\gamma s/2)\varphi(r)$ to twelve digits. The exact $\Var B$ lies below the bound of
+Lemma~\ref{lem:var} in every case tried and is $0.91$ to $1.00$ times its first-order term.
+
+\emph{The rate.} For $(n,n_1)\in\{(40,1),(100,10),(100,50),(1000,100)\}$ and $K\in\{10^3,10^4\}$, the minimum over a
+grid of steps in $(0,1/L]$ of the exact error from $x_0=D$ is $1.29$ to $1.54$ times $G^2\Lambda^2/(8\mu T^2)$, the
+leading term of part (b), and the ratio decreases as $K$ grows ($1.54$ to $1.40$ for $(40,1)$, $1.42$ to $1.32$ for
+$(100,10)$). The minimum is attained at $\gamma\mu T/\Lambda$ between $1.04$ and $1.10$, and at $\gamma=\Lambda/(\mu T)$
+the error lies below the bound of part (b) in all six cases. The minimum exceeds the lower bound of part (a) by a
+factor of $126$ to $190$, so the constant $1/512$ is far from sharp. From $x_0=-D$ the minimum is $2\cdot10^{-4}$ to
+$0.018$ times the same unit, which is the cancellation described after the proof of Theorem~\ref{thm:main}(a).
+
+\section*{Acknowledgments and funding}
+
+This research was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, by the Israel Science Foundation (grant number 2258/19), and by the Israel Science Foundation (ISF Grant 4101/25).
+
+\section*{Declaration of competing interest}
+
+The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are included in the funding declaration above.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+
+Anthropic Claude AI systems were used to develop the mathematical derivations, write and run the numerical checks, perform internal consistency and literature reviews, and write and prepare this manuscript and its publication files. The author selected the problem and directed the work; the author did not carry out the mathematics or the writing. Responsibility for submission or publication rests with the author. The AI-assisted internal reviews, compilation checks and rendered-page inspections are not external peer review or formal verification.
+
+\section*{Data and code availability}
+
+The paper is theoretical. The script that produces the numerical checks of Section~\ref{sec:numerics} is in the
+\texttt{code} directory of the repository
+\[
+\texttt{github.com/yspennstate/rr-constant-step-log-factor}.
+\]
+
+\begin{thebibliography}{10}
+\bibitem{ays} K.~Ahn, C.~Yun and S.~Sra, \emph{SGD with shuffling: optimal rates without component convexity and large
+epoch requirements}, Advances in Neural Information Processing Systems 33 (NeurIPS 2020), arXiv:2006.06946.
+\bibitem{cly} J.~Cha, J.~Lee and C.~Yun, \emph{Tighter lower bounds for shuffling SGD: random permutations and beyond},
+Proc. 40th Int. Conf. Machine Learning (ICML 2023), arXiv:2303.07160.
+\bibitem{lz} Z.~Liu and Z.~Zhou, \emph{On the last-iterate convergence of shuffling gradient methods}, Proc. 41st Int.
+Conf. Machine Learning (ICML 2024), arXiv:2403.07723.
+\bibitem{mw} H.~B.~Mann and D.~R.~Whitney, \emph{On a test of whether one of two random variables is stochastically
+larger than the other}, Ann. Math. Statist. \textbf{18} (1947), 50--60.
+\bibitem{mkr} K.~Mishchenko, A.~Khaled and P.~Richt\'arik, \emph{Random reshuffling: simple analysis with vast
+improvements}, Advances in Neural Information Processing Systems 33 (NeurIPS 2020), arXiv:2006.05988.
+\bibitem{rgp} S.~Rajput, A.~Gupta and D.~Papailiopoulos, \emph{Closing the convergence gap of SGD without replacement},
+Proc. 37th Int. Conf. Machine Learning (ICML 2020).
+\bibitem{ss} I.~Safran and O.~Shamir, \emph{How good is SGD with random shuffling?}, Proc. 33rd Conf. Learning Theory
+(COLT 2020), arXiv:1908.00045.
+\bibitem{ss21} I.~Safran and O.~Shamir, \emph{Random shuffling beats SGD only after many epochs on ill-conditioned
+problems}, Advances in Neural Information Processing Systems 34 (NeurIPS 2021).
+\end{thebibliography}
+
+\end{document}
