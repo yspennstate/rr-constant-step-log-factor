@@ -11,6 +11,7 @@
 \newcommand{\Var}{\operatorname{Var}}
 \title[The logarithmic factor in constant-step random reshuffling]{The logarithmic factor in the tuned constant-step rate of random reshuffling}
 \author{Yitzchak Shmalo}
+\usepackage{xurl}
 \begin{document}
 \begin{abstract}
 For strongly convex finite sums, the known last-iterate upper bounds for random reshuffling with a constant step size
@@ -278,6 +279,8 @@ $0.018$ times the same unit, which is the cancellation described after the proof
 
 This research was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, by the Israel Science Foundation (grant number 2258/19), and by the Israel Science Foundation (ISF Grant 4101/25).
 
+This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results, coordinate who works on what, and audit each other's work. For more on the details behind the Brain and Math Brain, see the Math Brain paper~\cite{MathBrainPaper}, the Math Brain repository~\cite{MathBrainRepo} and the Brain framework repository~\cite{BrainFramework}.
+
 \section*{Declaration of competing interest}
 
 The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are included in the funding declaration above.
@@ -293,6 +296,8 @@ The paper is theoretical. The script that produces the numerical checks of Secti
 \[
 \texttt{github.com/yspennstate/rr-constant-step-log-factor}.
 \]
+
+The paper is part of the Math Brain project, whose public repository is \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
 
 \begin{thebibliography}{10}
 \bibitem{ays} K.~Ahn, C.~Yun and S.~Sra, \emph{SGD with shuffling: optimal rates without component convexity and large
@@ -311,6 +316,12 @@ Proc. 37th Int. Conf. Machine Learning (ICML 2020).
 (COLT 2020), arXiv:1908.00045.
 \bibitem{ss21} I.~Safran and O.~Shamir, \emph{Random shuffling beats SGD only after many epochs on ill-conditioned
 problems}, Advances in Neural Information Processing Systems 34 (NeurIPS 2021).
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
+
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
+
+\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public}.
+
 \end{thebibliography}
 
 \end{document}
