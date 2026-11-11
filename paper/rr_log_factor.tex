@@ -36,7 +36,9 @@ the total number of steps and $x_K$ for the iterate at the end of epoch $K$.
 
 Upper bounds for the last iterate, or for function values along the last epoch, with a constant step chosen from $K$,
 are given by Mishchenko, Khaled and Richt\'arik \cite{mkr}, Ahn, Yun and Sra \cite{ays} and Liu and Zhou \cite{lz},
-among others; each carries a logarithmic factor in $K$ or $T$, coming from the step size. Lower bounds for constant
+among others; each carries a logarithmic factor in $K$ or $T$, coming from the step size. For convex smooth
+components, Chen and Zhang \cite{cz} obtain a last-iterate bound with constant component steps of order
+$1/(L(1+\log(nK)))$, and they too leave the removal of the logarithm open. Lower bounds for constant
 steps are due to Safran and Shamir \cite{ss,ss21}, Rajput, Gupta and Papailiopoulos \cite{rgp} and Cha, Lee and Yun
 \cite{cly}; they carry no logarithm. Liu and Zhou write that the extra factor
 $1+\log K$ in their step sizes ``seems necessary in our analysis'' and ask whether it can be removed \cite[Section~6]{lz}.
@@ -302,6 +304,8 @@ The paper is part of the Math Brain project, whose public repository is \url{htt
 \begin{thebibliography}{10}
 \bibitem{ays} K.~Ahn, C.~Yun and S.~Sra, \emph{SGD with shuffling: optimal rates without component convexity and large
 epoch requirements}, Advances in Neural Information Processing Systems 33 (NeurIPS 2020), arXiv:2006.06946.
+\bibitem{cz} Z.~Chen and Z.~Zhang, \emph{Large-step last-iterate convergence of random-reshuffling stochastic
+gradient descent}, arXiv:2610.19444 (2026).
 \bibitem{cly} J.~Cha, J.~Lee and C.~Yun, \emph{Tighter lower bounds for shuffling SGD: random permutations and beyond},
 Proc. 40th Int. Conf. Machine Learning (ICML 2023), arXiv:2303.07160.
 \bibitem{lz} Z.~Liu and Z.~Zhou, \emph{On the last-iterate convergence of shuffling gradient methods}, Proc. 41st Int.
