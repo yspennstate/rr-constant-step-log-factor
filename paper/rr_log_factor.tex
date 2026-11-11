@@ -38,7 +38,7 @@ Upper bounds for the last iterate, or for function values along the last epoch, 
 are given by Mishchenko, Khaled and Richt\'arik \cite{mkr}, Ahn, Yun and Sra \cite{ays} and Liu and Zhou \cite{lz},
 among others; each carries a logarithmic factor in $K$ or $T$, coming from the step size. For convex smooth
 components, Chen and Zhang \cite{cz} obtain a last-iterate bound with constant component steps of order
-$1/(L(1+\log(nK)))$, and they too leave the removal of the logarithm open. Lower bounds for constant
+$1/(L(1+\log(nK)))$, and they too leave the removal of the logarithm open; Liu, Guo and Han \cite{lgh} allow arbitrary non-increasing steps in the general convex case, with rates stated up to logarithmic factors. That random reshuffling beats with-replacement sampling for strongly convex sums goes back to G\"urb\"uzbalaban, Ozdaglar and Parrilo \cite{gop}. Lower bounds for constant
 steps are due to Safran and Shamir \cite{ss,ss21}, Rajput, Gupta and Papailiopoulos \cite{rgp} and Cha, Lee and Yun
 \cite{cly}; they carry no logarithm. Liu and Zhou write that the extra factor
 $1+\log K$ in their step sizes ``seems necessary in our analysis'' and ask whether it can be removed \cite[Section~6]{lz}.
@@ -308,6 +308,10 @@ epoch requirements}, Advances in Neural Information Processing Systems 33 (NeurI
 gradient descent}, arXiv:2610.19444 (2026).
 \bibitem{cly} J.~Cha, J.~Lee and C.~Yun, \emph{Tighter lower bounds for shuffling SGD: random permutations and beyond},
 Proc. 40th Int. Conf. Machine Learning (ICML 2023), arXiv:2303.07160.
+\bibitem{gop} M.~G\"urb\"uzbalaban, A.~Ozdaglar and P.~A.~Parrilo, \emph{Why random reshuffling beats stochastic
+gradient descent}, Math. Program. \textbf{186} (2021), 49--84.
+\bibitem{lgh} H.~Liu, T.~Guo and C.~Han, \emph{A shadow sequence technique for last-iterate convergence analysis of the
+random reshuffling method: relaxed stepsize conditions and beyond}, arXiv:2610.29166 (2026).
 \bibitem{lz} Z.~Liu and Z.~Zhou, \emph{On the last-iterate convergence of shuffling gradient methods}, Proc. 41st Int.
 Conf. Machine Learning (ICML 2024), arXiv:2403.07723.
 \bibitem{mw} H.~B.~Mann and D.~R.~Whitney, \emph{On a test of whether one of two random variables is stochastically
