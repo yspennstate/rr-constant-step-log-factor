@@ -1,0 +1,8 @@
+(40,1,1000) roots ['0.843208']  min/unit 7.2770e-04 at g*mu*T/Lam 0.8432  (error at root 7.2773e-04)
+(40,1,10000) roots ['0.851368']  min/unit 9.9624e-05 at g*mu*T/Lam 0.8514  (error at root 9.9624e-05)
+(100,10,1000) roots ['0.851481']  min/unit 1.0634e-02 at g*mu*T/Lam 0.8512  (error at root 1.0639e-02)
+(100,10,10000) roots ['0.860948']  min/unit 1.3742e-03 at g*mu*T/Lam 0.8609  (error at root 1.3742e-03)
+(100,50,1000) roots ['0.858173']  min/unit 1.1474e-01 at g*mu*T/Lam 0.8563  (error at root 1.1512e-01)
+(100,50,10000) roots ['0.867482']  min/unit 1.4416e-02 at g*mu*T/Lam 0.8673  (error at root 1.4420e-02)
+(1000,100,1000) roots ['0.861065']  min/unit 1.3579e-01 at g*mu*T/Lam 0.8591  (error at root 1.3625e-01)
+(1000,100,10000) roots ['0.870185']  min/unit 1.6870e-02 at g*mu*T/Lam 0.8700  (error at root 1.6875e-02)

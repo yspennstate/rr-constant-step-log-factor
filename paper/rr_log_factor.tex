@@ -36,7 +36,9 @@ the total number of steps and $x_K$ for the iterate at the end of epoch $K$.
 
 Upper bounds for the last iterate, or for function values along the last epoch, with a constant step chosen from $K$,
 are given by Mishchenko, Khaled and Richt\'arik \cite{mkr}, Ahn, Yun and Sra \cite{ays} and Liu and Zhou \cite{lz},
-among others; each carries a logarithmic factor in $K$ or $T$, coming from the step size. For convex smooth
+among others; each carries a logarithmic factor in $K$ or $T$, coming from the step size. When the average has a
+Lipschitz Hessian, Li \cite{li} proves the last-epoch rate $\widetilde O(T^{-2}+n^2T^{-3})$ for a constant step, again
+up to logarithmic factors; for nonsmooth components see Liu and Zhou \cite{lz25}. For convex smooth
 components, Chen and Zhang \cite{cz} obtain a last-iterate bound with constant component steps of order
 $1/(L(1+\log(nK)))$, and they too leave the removal of the logarithm open; Liu, Guo and Han \cite{lgh} allow arbitrary non-increasing steps in the general convex case, with rates stated up to logarithmic factors. That random reshuffling beats with-replacement sampling for strongly convex sums goes back to G\"urb\"uzbalaban, Ozdaglar and Parrilo \cite{gop}. Lower bounds for constant
 steps are due to Safran and Shamir \cite{ss,ss21}, Rajput, Gupta and Papailiopoulos \cite{rgp} and Cha, Lee and Yun
@@ -269,13 +271,15 @@ $\varphi(r)\ge\max(r^{n_1-1},2/(n_1+1))$; for $n_1=1$ both bounds are equalities
 programme equals $(\gamma s/2)\varphi(r)$ to twelve digits. The exact $\Var B$ lies below the bound of
 Lemma~\ref{lem:var} in every case tried and is $0.91$ to $1.00$ times its first-order term.
 
-\emph{The rate.} For $(n,n_1)\in\{(40,1),(100,10),(100,50),(1000,100)\}$ and $K\in\{10^3,10^4\}$, the minimum over a
+\emph{The rate.} For the six instances $(n,n_1,K)=(40,1,10^3)$, $(40,1,10^4)$, $(100,10,10^3)$, $(100,10,10^4)$,
+$(100,50,10^4)$ and $(1000,100,10^4)$, the minimum over a
 grid of steps in $(0,1/L]$ of the exact error from $x_0=D$ is $1.29$ to $1.54$ times $G^2\Lambda^2/(8\mu T^2)$, the
 leading term of part (b), and the ratio decreases as $K$ grows ($1.54$ to $1.40$ for $(40,1)$, $1.42$ to $1.32$ for
 $(100,10)$). The minimum is attained at $\gamma\mu T/\Lambda$ between $1.04$ and $1.10$, and at $\gamma=\Lambda/(\mu T)$
 the error lies below the bound of part (b) in all six cases. The minimum exceeds the lower bound of part (a) by a
-factor of $126$ to $190$, so the constant $1/512$ is far from sharp. From $x_0=-D$ the minimum is $2\cdot10^{-4}$ to
-$0.018$ times the same unit, which is the cancellation described after the proof of Theorem~\ref{thm:main}(a).
+factor of $126$ to $190$, so the constant $1/512$ is far from sharp. From $x_0=-D$ the minimum is $1.0\cdot10^{-4}$ to
+$0.017$ times the same unit; it is attained next to the step at which $\E X_K=0$, which lies at $\gamma\mu T/\Lambda$
+between $0.84$ and $0.87$. This is the cancellation described after the proof of Theorem~\ref{thm:main}(a).
 
 \section*{Acknowledgments and funding}
 
@@ -293,7 +297,7 @@ Anthropic Claude AI systems were used to develop the mathematical derivations, w
 
 \section*{Data and code availability}
 
-The paper is theoretical. The script that produces the numerical checks of Section~\ref{sec:numerics} is in the
+The paper is theoretical. The scripts that produce the numerical checks of Section~\ref{sec:numerics} are in the
 \texttt{code} directory of the repository
 \[
 \texttt{github.com/yspennstate/rr-constant-step-log-factor}.
@@ -314,6 +318,10 @@ gradient descent}, Math. Program. \textbf{186} (2021), 49--84.
 random reshuffling method: relaxed stepsize conditions and beyond}, arXiv:2610.29166 (2026).
 \bibitem{lz} Z.~Liu and Z.~Zhou, \emph{On the last-iterate convergence of shuffling gradient methods}, Proc. 41st Int.
 Conf. Machine Learning (ICML 2024), arXiv:2403.07723.
+\bibitem{li} J.~Li, \emph{Centered permutation prefixes for SGD with random reshuffling: sharp rates, H\"older geometry,
+and composite proximal extensions}, arXiv:2609.04578 (2026).
+\bibitem{lz25} Z.~Liu and Z.~Zhou, \emph{Improved last-iterate convergence of shuffling gradient methods for nonsmooth
+convex optimization}, arXiv:2505.23056 (2025).
 \bibitem{mw} H.~B.~Mann and D.~R.~Whitney, \emph{On a test of whether one of two random variables is stochastically
 larger than the other}, Ann. Math. Statist. \textbf{18} (1947), 50--60.
 \bibitem{mkr} K.~Mishchenko, A.~Khaled and P.~Richt\'arik, \emph{Random reshuffling: simple analysis with vast

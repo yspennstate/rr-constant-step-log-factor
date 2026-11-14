@@ -27,6 +27,9 @@ epoch exactly: the stationary mean of the epoch-end iterate is gamma G phi/2 wit
   epoch, checks of Lemmas 2.1 and 2.2, a Monte Carlo comparison, and the tuned rate on six instances against both
   bounds of Theorem 1.1. Requires Python 3 and NumPy; runs in a few minutes.
 - `code/check_output.txt` - the output of `python rr_check.py`.
+- `code/minus_start.py` - for the start x0 = -D, the step at which the mean iterate vanishes and the exact minimum of
+  the error next to it, on eight instances (the six above and two more with K = 1000). Requires NumPy and SciPy.
+- `code/minus_start_output.txt` - its output.
 
 ## License
 
